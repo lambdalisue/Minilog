@@ -1,0 +1,35 @@
+@import url(http://fonts.googleapis.com/css?family=Quattrocento|Quicksand);
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    color: #666;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Quattrocento', serif;
+    color:#4E443C;
+    font-variant: small-caps;
+    text-transform: none;
+    font-weight: 100;
+}
+
+a {
+    color: #68a;
+    text-decoration: none;
+}
+a:hover {
+    color: #8aa;
+}
+a:focus {
+    color: #46a;
+}
+
+p {
+    line-height: 1.6em;
+    margin: 1.8em 0;
+}
+p:first-child {
+    margin-top: 0;
+}
+p:last-child {
+    margin-bottom: 0;
+}

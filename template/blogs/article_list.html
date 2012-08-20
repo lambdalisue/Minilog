@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load markup %}
+{% load pagination_tags %}
+
+{% block title %}Minilog - ブログ記事一覧{% endblock %}
+
+{% block content %}
+<section id="article-list">
+    <h1>Articles</h1>
+    {% autopaginate object_list 6 %}
+    {% for object in object_list %}
+    <article class="article {% cycle 'odd' 'even' %}">
+        <h1 class="title"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
+        <section class="body">
+            {% comment %}
+            英語などスペース区切りの言語では truncatewords が使用できるが
+            日本語では使用できないため、代わりに truncatechars を使用。
+
+            なお truncatechars は Django 1.4 からの機能なので、それ以前の
+            Django を使用している場合は django-qwert 内に truncateletters.py
+            という truncatechars とほぼ同等の処理を行うものがあるのでこちらを利用して
+            いただきたい。また truncalechars は HTML に対応していないが truncateletters
+            は HTML にも対応し、タグ以外の部分で truncate するという事もできる
+
+            Ref: https://github.com/lambdalisue/django-qwert/blob/master/qwert/templatetags/truncateletters.py
+            {% endcomment %}
+            {{ object.body|markdown|truncatechars:200 }}
+        </section>
+    </article>
+    {% empty %}
+    <p>まだブログが投稿されていないようです</p>
+    {% endfor %}
+</section>
+{% paginate %}
+{% endblock %}
+
+

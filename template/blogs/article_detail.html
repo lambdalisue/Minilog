@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load markup %}
+
+{% block title %}Minilog - {{ object.title }}{% endblock %}
+
+{% block breadcrumbs %}
+<li><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></li>
+{% endblock %}
+
+{% block content %}
+<article class="article">
+    <h1 class="title">{{ object.title }}</h1>
+    <section class="body">
+        {{ object.body|markdown }}
+    </section>
+</article>
+{% endblock %}
+
+
+
