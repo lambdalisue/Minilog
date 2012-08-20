@@ -1,3 +1,4 @@
 django
 markdown
 django-pagination
+django-compressor

@@ -8,6 +8,7 @@
 <section id="article-list">
     <h1>Articles</h1>
     {% autopaginate object_list 6 %}
+    {% paginate %}
     {% for object in object_list %}
     <article class="article {% cycle 'odd' 'even' %}">
         <h1 class="title"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>

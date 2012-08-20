@@ -1,12 +1,16 @@
+{% load compress %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Minilog{% endblock %}</title>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door|Quattrocento|Quicksand'>
+    {% compress css %}
     <link rel="stylesheet" href="{{ STATIC_URL }}lib/WebSymbols/stylesheet.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/typography.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/pagination.css">
+    <link type='text/less' rel="stylesheet" href="{{ STATIC_URL }}less/style.less">
+    <link type='text/less' rel="stylesheet" href="{{ STATIC_URL }}less/typography.less">
+    <link type='text/less' rel="stylesheet" href="{{ STATIC_URL }}less/pagination.less">
+    {% endcompress %}
     {% block head %}
     {% endblock %}
 </head>

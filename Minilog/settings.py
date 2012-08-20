@@ -74,7 +74,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    
+
     # プロジェクトとしての静的ファイル（画像・スクリプト・スタイルシートなど）を
     # 置く場所を追加する。なお各アプリ用の静的ファイルは各アプリ内の static
     # フォルダに置けば良い
@@ -88,6 +88,9 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+
+    # django-compressor で使用する
+    'compressor.finders.CompressorFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -108,6 +111,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # django-pagination で使用する
     'pagination.middleware.PaginationMiddleware',
 )
 
@@ -151,9 +156,34 @@ INSTALLED_APPS = (
     # Djangoにて簡単にページネーションをするためのライブラリ
     # （デフォルトの機能にもページネーションはあるが、こちらのほうが楽）
     'pagination',
+    # JavaScript, CSS の minify, CoffeeScript, Lessのコンパイルなどを自動化
+    # するためのプラグイン
+    'compressor',
     # 自作のアプリ
     'blogs',
 )
+
+# django-compressor で CoffeeScript, Less, Sass, Scss を自動的にコンパイルする
+# ための設定。それぞれの実行ファイルが環境に存在している必要がある
+#
+#   npm -g install coffeescript
+#   npg -g install less
+#
+# などでインストールを予めおこなっておく
+COMPRESS_PRECOMPILERS = (
+    ('text/coffeescript', 'coffee --compile --stdio'),
+    ('text/less', 'lessc {infile} {outfile}'),
+    ('text/x-sass', 'sass {infile} {outfile}'),
+    ('text/x-scss', 'sass --scss {infile} {outfile}'),
+)
+# django-compressor で CSS の minify に CSSMin を使用
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
+# 強制的に django-compressor をONにする
+# 通常はデプロイモード（DEBUG=False)の時のみONになる
+COMPRESS_ENABLED = True
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

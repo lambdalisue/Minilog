@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=The+Girl+Next+Door);
+@import url("http://fonts.googleapis.com/css?family=The+Girl+Next+Door");
 body {
     margin: 0;
     padding: 0;
@@ -8,78 +8,78 @@ div#wrapper {
     width: 960px;
     margin: 0 auto;
 }
+
 header {
     position: relative;
-}
-header h1{
-    margin: 0;
-    font-family: 'The Girl Next Door', sans-serif;
-    font-variant: normal;
-    font-size: 200px;
-}
-header h2{
-    position: absolute;
-    top: 300px;
-    font-family: 'The Girl Next Door', sans-serif;
-    font-variant: normal;
-    font-size: 20px;
-    color: #ababab;
-}
-header:after {
-    content: "M";
-    font-family: "WebSymbolsRegular";
-    font-size: 180px;
-    display: block;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    -moz-transform: rotate(20deg); 
-    -webkit-transform: rotate(20deg);
-    transform: rotate(20deg);
-    color: #ababab;
+
+    h1{
+        margin: 0;
+        font-family: 'The Girl Next Door', sans-serif;
+        font-variant: normal;
+        font-size: 200px;
+    }
+    h2{
+        position: absolute;
+        top: 300px;
+        font-family: 'The Girl Next Door', sans-serif;
+        font-variant: normal;
+        font-size: 20px;
+        color: #ababab;
+    }
+    &:after {
+        content: "M";
+        font-family: "WebSymbolsRegular";
+        font-size: 180px;
+        display: block;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        -moz-transform: rotate(20deg); 
+        -webkit-transform: rotate(20deg);
+        transform: rotate(20deg);
+        color: #ababab;
+    }
 }
 
 nav#menu ul,
 nav#breadcrumbs ol {
     margin: 0;
     padding: 0;
+    li {
+        float: left;
+        list-style: none;
+    }
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
 }
-nav#menu ul li,
-nav#breadcrumbs ol li {
-    float: left;
-    list-style: none;
-}
-nav#menu ul:after,
-nav#breadcrumbs ol:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
 nav#menu ul li a:after{
     content: "[";
     display: block;
     font-family: "WebSymbolsRegular";
 }
 
+
 nav#breadcrumbs {
     font-size: 11px;
     color: #dedede;
-}
-nav#breadcrumbs a{
-    color: #dedede;
-}
-nav#breadcrumbs a:hover{
-    color: #ababab;
-    text-decoration: underline;
-}
-nav#breadcrumbs li:before{
-    content: "»";
-    margin: 0 5px;
-}
-nav#breadcrumbs li:first-child:before{
-    content: "";
-    margin: 0;
+    a {
+        color: #dedede;
+        &:hover{
+            color: #ababab;
+            text-decoration: underline;
+        }
+    }
+    li:before{
+        content: "»";
+        margin: 0 5px;
+    }
+    li:first-child:before{
+        content: "";
+        margin: 0;
+    }
 }
 footer{
     margin-top: 60px;
@@ -140,12 +140,12 @@ section#main > section > h1:after {
 #article-list .article {
     width: 460px;
     float: left;
-}
-#article-list .article.odd {
-    margin-right: 20px;
-}
-#article-list .article.even {
-    margin-left: 20px;
+    &.odd {
+        margin-right: 20px;
+    }
+    &.even {
+        margin-left: 20px;
+    }
 }
 #article-list:after {
     content: "";
